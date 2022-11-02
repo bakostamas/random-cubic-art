@@ -3,11 +3,6 @@ from matplotlib import pyplot as plt
 import io
 
 
-CMAP_STYLES = ['Greys', 'Purples', 'Blues', 'Greens', 'Oranges', 'Reds', 'YlOrRd', 'OrRd', 'PuRd', 'RdPu', 'BuPu',
-               'GnBu', 'PuBu', 'YlGnBu', 'BuGn', 'YlGn', 'binary', 'gray', 'bone', 'pink', 'summer', 'hot', 'afmhot',
-               'gist_heat', 'copper']
-
-
 def get_image(size_x: int, size_y: int, style_code: int = None, noisy: bool = False, iter: int = 200):
     """
     Get random cubic art image as BytesIO
@@ -27,6 +22,10 @@ def get_image(size_x: int, size_y: int, style_code: int = None, noisy: bool = Fa
         Generated PNG image as BytesIO
     """
 
+    cmap_styles = ['Greys', 'Purples', 'Blues', 'Greens', 'Oranges', 'Reds', 'YlOrRd', 'OrRd', 'PuRd', 'RdPu',
+                   'BuPu', 'GnBu', 'PuBu', 'YlGnBu', 'BuGn', 'YlGn', 'binary', 'gray', 'bone', 'pink', 'summer',
+                   'hot', 'afmhot', 'gist_heat', 'copper']
+
     if any([size_x < 1, size_y < 1, iter < 1]):
         raise ValueError("The parameters 'size_x', 'size_y', and 'iter' must be positive and greater than equal to 1")
 
@@ -37,17 +36,18 @@ def get_image(size_x: int, size_y: int, style_code: int = None, noisy: bool = Fa
         img_array = np.full(image_size, 10)
 
     try:
-        cmap = CMAP_STYLES[style_code]
+        cmap = cmap_styles[style_code]
     except (IndexError, TypeError):
-        cmap = CMAP_STYLES[np.random.randint(0, len(CMAP_STYLES))]
+        cmap = cmap_styles[np.random.randint(0, len(cmap_styles))]
 
     for i in range(iter):
-        r01 = np.random.randint(0, size_y)
-        r02 = np.random.randint(r01, size_y)
-        r11 = np.random.randint(0, size_x)
-        r12 = np.random.randint(r11, size_x)
+        # Random generated coordinates of a rectangle:
+        p1_start = np.random.randint(0, size_y)
+        p1_end = np.random.randint(p1_start, size_y)
+        p2_start = np.random.randint(0, size_x)
+        p2_end = np.random.randint(p2_start, size_x)
 
-        img_array[r01:r02, r11:r12] = img_array[r01:r02, r11:r12] + 1
+        img_array[p1_start:p1_end, p2_start:p2_end] = img_array[p1_start:p1_end, p2_start:p2_end] + 1
 
     output = io.BytesIO()
     plt.imsave(output, img_array, cmap=cmap)
