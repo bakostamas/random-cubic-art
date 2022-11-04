@@ -3,13 +3,13 @@ from matplotlib import pyplot as plt
 import io
 
 
-def get_image(size_x: int, size_y: int, style_code: int = None, noisy: bool = False, iter: int = 200):
+def get_image(size_x: int = 500, size_y: int = 500, style_code: int = None, noisy: bool = False, iter: int = 200):
     """
     Get random cubic art image as BytesIO
     :param size_x: integer
-        X size of the image
+        Length of the image in pixels, default is 500
     :param size_y: integer
-        Y size of the image
+        Height of the image in pixels, default is 500
     :param style_code: integer
         Color style code to apply (valid codes: [0-24]).
         If the given value out of range or not provided, then a random style code will be used.

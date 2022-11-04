@@ -5,7 +5,7 @@ import unittest
 class Test(unittest.TestCase):
     def test_generate_images(self):
         for i in range(25):
-            img = images.get_image(1024, 768, style_code=i, noisy=True, iter=200)
+            img = images.get_image(size_x=1024, size_y=768, style_code=i)
             with open(f"output/{i}.png", "wb") as f:
                 f.write(img.getbuffer())
 

@@ -51,4 +51,4 @@ def generate_image(noisy: bool = False):
 
 
 if __name__ == '__main__':
-    app.run(port=5000, host='0.0.0.0', debug=False)
+    app.run(port=5055, host='0.0.0.0', debug=False)
