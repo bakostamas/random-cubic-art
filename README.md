@@ -31,7 +31,7 @@ with open("output.png", "wb") as f:
 
 The function returns the generated PNG image as BytesIO object.
 
-###Color style codes (from value 0 to 24):
+### Color style codes (from value 0 to 24):
 ![Image style codes](example_images/image_styles.jpg)
 
 
