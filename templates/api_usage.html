@@ -1,0 +1,23 @@
+<body style="font-family:arial;">
+<h1>Random cubic art generator</h1>
+<h3>Available API functions</h3>
+<ul>
+    <li> <a href="/api/get-clean-image">/api/get-clean-image</a></li>
+    <li> <a href="/api/get-noisy-image">/api/get-noisy-image</a></li>
+</ul>
+
+<h3>Optional parameters</h3>
+<ul>
+    <li><b>length:</b> Length of the image in pixels (default: 500)</li>
+    <li><b>height:</b> Height of the image in pixels (default: 500)</li>
+    <li><b>style:</b> Color style code to apply - valid codes: [0-24] (default: randomly chosen)</li>
+    <li><b>iter:</b> Number of iterations - the number of rectangles on result image (default: 200)</li>
+</ul>
+
+<h3>Examples</h3>
+<ul>
+    <li><a href="/api/get-clean-image?length=1024&height=768">/api/get-clean-image?length=1024&amp;height=768</a></li>
+    <li><a href="/api/get-noisy-image?style=2">/api/get-noisy-image?style=2</a></li>
+    <li><a href="/api/get-noisy-image?iter=10">/api/get-noisy-image?iter=10</a></li>
+</ul>
+</body>
