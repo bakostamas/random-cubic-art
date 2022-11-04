@@ -38,9 +38,7 @@ def generate_image(noisy: bool = False):
         try:
             params[key] = int(request.args.get(value))
         except (TypeError, ValueError):
-            if key in ['size_x', 'size_y']:
-                params[key] = 500
-            elif key == 'iter':
+            if key == 'iter':
                 params[key] = 200
             else:
                 params[key] = None

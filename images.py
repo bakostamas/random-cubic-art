@@ -3,7 +3,7 @@ from matplotlib import pyplot as plt
 import io
 
 
-def get_image(size_x: int = 500, size_y: int = 500, style_code: int = None, noisy: bool = False, iter: int = 200):
+def get_image(size_x: int = None, size_y: int = None, style_code: int = None, noisy: bool = False, iter: int = 200):
     """
     Get random cubic art image as BytesIO
     :param size_x: integer
@@ -25,6 +25,9 @@ def get_image(size_x: int = 500, size_y: int = 500, style_code: int = None, nois
     cmap_styles = ['Greys', 'Purples', 'Blues', 'Greens', 'Oranges', 'Reds', 'YlOrRd', 'OrRd', 'PuRd', 'RdPu',
                    'BuPu', 'GnBu', 'PuBu', 'YlGnBu', 'BuGn', 'YlGn', 'binary', 'gray', 'bone', 'pink', 'summer',
                    'hot', 'afmhot', 'gist_heat', 'copper']
+
+    size_x = 500 if size_x is None else size_x
+    size_y = 500 if size_y is None else size_y
 
     if any([size_x < 1, size_y < 1, iter < 1]):
         raise ValueError("The parameters 'size_x', 'size_y', and 'iter' must be positive and greater than equal to 1")
