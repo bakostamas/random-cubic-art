@@ -36,12 +36,17 @@ The function returns the generated PNG image as BytesIO object.
 
 
 ### Usage as a REST API service
-Simply run app.py file, that will launch Flask's development web server. 
+For testing simply run app.py file, that will launch Flask's development web server. 
+***Flask's development web server is not suitable for production environment!***
 The application will listen on http://localhost:5055
 ```
 python app.py
 ```
-***Flask's development web server is not suitable for production environment!***
+
+On Linux environment use gunicorn web server instead:
+```
+gunicorn -w 4 --bind 0.0.0.0:5055 'app:app'
+```
 
 Detailed api description available here (if the application runs on the default 5055 port):
 http://localhost:5055/api/
@@ -63,6 +68,13 @@ cd <path of Dockerfile>
 docker build -t random-cubic-art .
 docker run -d -p 5055:5055 --name cubic-images random-cubic-art
 ```
+
+### Download from Docker Hub
+You can also download the built image from Docker Hub:
+```
+docker pull bakostamas/random-cubic-art
+```
+Run in a container as described in previous step.
 
 ### Random generated example images
 #### Example 1

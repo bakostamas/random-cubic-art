@@ -1,4 +1,4 @@
-FROM python:3.7-slim
+FROM python:3.11-slim
 
 WORKDIR /app
 ADD . /app
@@ -6,4 +6,4 @@ ADD . /app
 RUN pip install -r requirements.txt
 
 EXPOSE 5055
-CMD python app.py
+CMD gunicorn -w 4 --bind 0.0.0.0:5055 'app:app'
