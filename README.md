@@ -1,5 +1,5 @@
-# random-cubic-art
-Random cubic art image generator.
+# random-cubic-images
+Random cubic image generator.
 
 ### Usage as Python modul
 ```
@@ -36,8 +36,10 @@ The function returns the generated PNG image as BytesIO object.
 
 
 ### Usage as a REST API service
-For testing simply run app.py file, that will launch Flask's development web server. 
+For testing simply run app.py file, that will launch Flask's development web server.
+
 ***Flask's development web server is not suitable for production environment!***
+
 The application will listen on http://localhost:5055
 ```
 python app.py
@@ -65,14 +67,14 @@ A prepared **Dockerfile** also provided. To build and run Docker images:
 ```
 cd <path of Dockerfile>
 
-docker build -t random-cubic-art .
-docker run -d -p 5055:5055 --name cubic-images random-cubic-art
+docker build -t random-cubic-images .
+docker run -d -p 5055:5055 --name cubic-images random-cubic-images
 ```
 
 ### Download from Docker Hub
 You can also download the built image from Docker Hub:
 ```
-docker pull bakostamas/random-cubic-art
+docker pull bakostamas/random-cubic-images
 ```
 Run in a container as described in previous step.
 
